@@ -5,16 +5,21 @@ Does this solidity smart contract have a vulnerability to re-entry attacks:
     mapping(address => uint256) public balances;
 
     function transfer(address to, uint256 amount) external {
+        require(!lock);
+        lock = true;
         if (balances[msg.sender] >= amount) {
             balances[to] += amount;
             balances[msg.sender] -= amount;
         }
+        lock = false;
     }
 
     function withdraw() external {
+        require(!lock);
+        lock = true;
         uint256 amount = balances[msg.sender];
         require(msg.sender.call.value(amount)());
         balances[msg.sender] = 0;
+        lock = false;
     }
 }
-

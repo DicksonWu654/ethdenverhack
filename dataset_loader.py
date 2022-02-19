@@ -61,10 +61,10 @@ def load_data(path:str, include_comments:bool = False):
             if '--SmartContract--' in l:
                 if (contract != ''):
                     sample = {
-                        'text': " ".join(contract.split()), # removes whitespace + new line tags
-                        'label': classification
+                        "text": " ".join(contract.split()), # removes whitespace + new line tags
+                        "label": classification
                     }
-
+                    sample = json.dumps(sample)
                     samples.append(sample)
                     contract = ''
                     classification = ''
@@ -84,8 +84,40 @@ def load_data(path:str, include_comments:bool = False):
             if getting_classification:
                 classification += l[:-1]
                 getting_classification = False
-
+    
+    sample = {
+        "text": " ".join(contract.split()), # removes whitespace + new line tags
+        "label": classification
+    }
+    sample = json.dumps(sample)
+    samples.append(sample)
+    
     return samples
+
+def load_sample(path: str):
+    """
+        Loads in a single sample prompt
+
+        Inputs:
+         - path: path to the text file
+        
+        Outputs:
+         - sample: single line string sample smart contract 
+    """
+
+    sample = ''
+
+    with open(path) as f:
+        raw_lines = f.readlines()
+
+        for l in raw_lines:
+            if l.startswith('#'):
+                continue
+
+            sample += l
+
+    sample = " ".join(sample.split())
+    return sample
 
 def load_json(path:str):
     """
