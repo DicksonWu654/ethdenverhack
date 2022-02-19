@@ -3,8 +3,7 @@ import json
 
 import dataset_loader as loader
 
-# loader.load_data('./samples.txt')
-print(json.dumps(json.loads(loader.load_data('./samples.txt')), indent=4))
+loader.data_to_json('./samples.txt', './samples.json')
 
 # key = loader.load_key('./key.txt')
 # openai.api_key = key

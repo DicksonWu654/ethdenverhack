@@ -1,4 +1,28 @@
-def load_data(path):
+import json
+
+def data_to_json(path:str, output:str):
+    """
+        Converts a text data file into a JSON file that openAI can understand
+        
+        Inputs:
+         - path: Path to the input text file
+         - output: Path to the output json file
+    """
+    
+    data = load_data(path)
+    with open(output, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def load_data(path:str):
+    """
+        Loads in a text data file and converts it into json data
+
+        Inputs:
+         - path: Path to the input text file
+
+        Outputs:
+         - samples: Array of classification sample/label pairs
+    """
 
     with open(path) as f:
         raw_lines = f.readlines()
@@ -17,8 +41,8 @@ def load_data(path):
             if '--SmartContract--' in l:
                 if (contract != ''):
                     sample = {
-                        'contract': contract,
-                        'classification': classification
+                        'text': contract,
+                        'label': classification
                     }
 
                     samples.append(sample)
@@ -43,7 +67,16 @@ def load_data(path):
 
     return samples
 
-def load_key(path):
+def load_key(path:str):
+    """
+        Loads in an API key
+
+        Inputs:
+         - path: Path to the txt file containing the key
+
+        Outputs:
+         - key: API key
+    """
 
     with open(path) as f:
         key = f.read()
