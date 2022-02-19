@@ -1,0 +1,4 @@
+# test for GPT-3 contextual exploit recognition
+# format:
+# --SmartContract--
+# smart contract
