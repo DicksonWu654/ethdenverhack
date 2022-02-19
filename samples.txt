@@ -31,7 +31,7 @@ contract EtherStore {
 Yes
 
 --SmartContract--
-​​contract EtherStore {
+contract EtherStore {
     mapping(address => uint256) public balances;
 
     function transfer(address to, uint256 amount) external {

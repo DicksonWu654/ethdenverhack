@@ -1,14 +1,22 @@
 import openai
-import json
 
 import dataset_loader as loader
 
-loader.data_to_json('./samples.txt', './samples.json')
+# preprocess and save data
+SAMPLES = 'samples.txt'
+KEY = 'key.txt'
+DATA = 'data.jsonl'
 
-# key = loader.load_key('./key.txt')
+loader.data_to_json(SAMPLES, DATA)
+
+# # initialize the openAI API
+# key = loader.load_key(KEY)
 # openai.api_key = key
 
-# context = loader.load_data('./context.txt')
-# response = openai.Completion.create(engine='text-babbage-001', prompt=context, max_tokens=6)
+# # preform classification
+# print(open(DATA).readlines())
+# openai.File.create(
+#     file=open(DATA), 
+#     purpose="classifications"
+# )
 
-# print(response)

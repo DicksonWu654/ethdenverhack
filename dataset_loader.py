@@ -1,5 +1,8 @@
 import json
+import os
+from xml.etree.ElementInclude import include
 
+#? File system integrations
 def data_to_json(path:str, output:str):
     """
         Converts a text data file into a JSON file that openAI can understand
@@ -7,18 +10,32 @@ def data_to_json(path:str, output:str):
         Inputs:
          - path: Path to the input text file
          - output: Path to the output json file
+
+        Outputs:
+         - data: Data in JSON format
+         - writes to the output file
     """
     
     data = load_data(path)
-    with open(output, 'w') as f:
-        json.dump(data, f, indent=4)
 
-def load_data(path:str):
+    if os.path.exists(output):
+        os.remove(output)
+    else:
+        print('fail case')
+
+    with open(output, 'w') as f:
+        for d in data:
+            f.write(f'{d}\n')
+
+    return data
+
+def load_data(path:str, include_comments:bool = False):
     """
         Loads in a text data file and converts it into json data
 
         Inputs:
          - path: Path to the input text file
+         - include_comments: whether to include comments or not
 
         Outputs:
          - samples: Array of classification sample/label pairs
@@ -37,11 +54,14 @@ def load_data(path:str):
         for l in raw_lines:
             if l.startswith('#'):
                 continue
+
+            if not include_comments:
+                l = l.split('//')[0]
             
             if '--SmartContract--' in l:
                 if (contract != ''):
                     sample = {
-                        'text': contract,
+                        'text': " ".join(contract.split()), # removes whitespace + new line tags
                         'label': classification
                     }
 
@@ -66,6 +86,21 @@ def load_data(path:str):
                 getting_classification = False
 
     return samples
+
+def load_json(path:str):
+    """
+        Loads in a json file for data
+
+        Inputs:
+         - path: Path to the json data
+
+        Outputs:
+         - data: Json data
+    """
+
+    with open(path) as f:
+        data = json.load(f)
+        return data
 
 def load_key(path:str):
     """
