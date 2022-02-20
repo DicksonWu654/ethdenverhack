@@ -43,7 +43,7 @@ class Model:
         cls_token = last_hidden_state[:, 0, :]
 
         intent_output = tf.keras.layers.Dense(
-            self.intent_class_count,
+            2,
             activation='softmax',
             kernel_initializer=weight_initializer,
             kernel_constraint=None,
@@ -70,7 +70,7 @@ class Model:
         df_train = pd.read_pickle(dataset_path)
 
         # prepare model inputs
-        x_train_ids, x_train_attention, y_train_entities = encode(
+        x_train_ids, x_train_attention = encode(
             self.tokenizer, 
             list(df_train['contract']), 
             max_len=self.padding
