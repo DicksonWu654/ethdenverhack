@@ -1,4 +1,7 @@
+from concurrent.futures import process
 from flask import Flask, render_template, request
+
+from core_integration.reentrymain import process_gpt3
 
 app = Flask(__name__)
 
@@ -9,8 +12,9 @@ def index():
 @app.route('/post_contract', methods=['POST'])
 def post():
     contract = request.form['data']
-    print(contract)
-    return "recived: {}".format(request.form)
+    classification = process_gpt3(contract)
+
+    return f"Received: {contract}\n, Classification: {classification}"
 
 if __name__ == "__main__":
     app.run(debug=True)
