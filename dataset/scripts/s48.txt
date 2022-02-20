@@ -1,0 +1,34 @@
+contract EtherStore {
+    uint256 public withdrawalLimit = {numbers} ether;
+    mapping(address => uint256) public lastWithdrawTime;
+    mapping(address => uint256) public balances;
+    
+    function getTokenCountFor(address x) public view returns(uint) {
+        {comments}
+        return tokenBalance[x];
+    }
+    function getEtherCountFor(address x) public view returns(uint) {
+        {comments}
+        return etherBalance[x];
+    }
+    
+    function withdrawFunds (uint256 _weiToWithdraw) public {
+        require(!lock);
+        lock = true;
+        require(balances[msg.sender] >= _weiToWithdraw);
+        // limit the withdrawal
+        require(_weiToWithdraw <= withdrawalLimit);
+        // limit the time allowed to withdraw
+        require(now >= lastWithdrawTime[msg.sender] + 1 weeks);
+        {comments}
+        require(msg.sender.call.value(_weiToWithdraw)());
+        balances[msg.sender] -= _weiToWithdraw;
+        {comments}
+        lastWithdrawTime[msg.sender] = now;
+        lock = false;
+        {comments}
+    }
+    function depositFunds() public payable {
+        balances[msg.sender] += msg.value;
+    }
+ }

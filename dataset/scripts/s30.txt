@@ -1,93 +1,60 @@
-contract Token {
-
-    // This contract keeps track of two balances for it's users. A user can
-    // send ether to this contract and exchange ether for tokens and vice
-    // versa, given a varying exchange rate (currentRate).
-    mapping (address => uint) tokenBalance;
-    mapping (address => uint) etherBalance;
-    uint currentRate;
-
-    constructor() public {
-    // for solidity 0.4.19
-    /*function Token() public {*/
-        currentRate = 2;
-    }
-
-    function exchangeTokens(uint amount) public {
-        if (tokenBalance[msg.sender] >= amount) {
-            uint etherAmount = amount * currentRate;
-            etherBalance[msg.sender] += etherAmount;
-            tokenBalance[msg.sender] -= amount;
-        }
-    }
-
-    function exchangeEther(uint amount) public payable {
-        etherBalance[msg.sender] += msg.value;
-        if (etherBalance[msg.sender] >= amount) {
-            uint tokenAmount = amount / currentRate;
-            etherBalance[msg.sender] -= amount;{comments}
-            tokenBalance[msg.sender] += tokenAmount;{comments}
-        }
-    }
-
-    // This contract supports various utility functions for transferring,
-    // exchanging Ether and Tokens.
-    // Note that this probably makes it rather hard for symbolic execution
-    // tools to execute all combinations of possible re-entry points.{comments}
-    
-    function getTokenCountFor(address x) public view returns(uint) {
-        return tokenBalance[x];
-    }
-    function getEtherCountFor(address x) public view returns(uint) {{comments}
-        return etherBalance[x];
-    }
-    
-    function getTokenCount() public view returns(uint) {
-        return tokenBalance[msg.sender];
-    }
-
-    function depositEther() public payable {{comments}
-        if (msg.value > 0) { etherBalance[msg.sender] += msg.value; }
-    }
-    
-
-    
-    function transferToken(address to, uint amount) public {
-        if (tokenBalance[msg.sender] >= amount) {
-            tokenBalance[to] += amount;
-            tokenBalance[msg.sender] -= amount;{comments}
-        }
+​​contract EtherStore {
+    mapping(address => uint256) public balances;
+    function withdraw() external {
+        require(!lock);
+        lock = true;
+        {comments}
+        uint256 amount = balances[msg.sender];
+        {comments}
+        require(msg.sender.call.value(amount)());
+        balances[msg.sender] = 0;
+        lock = false;
         {comments}
     }
+    {comments}
+
+
+
+
+    {comments}
     
+    {comments}
+    {comments}
+    {comments}
 
-    // Function vulnerable to re-entrancy attack
-    function withdrawAll() public {{comments}
-        uint etherAmount = etherBalance[msg.sender];
-        uint tokenAmount = tokenBalance[msg.sender];
-        if (etherAmount > 0 && tokenAmount > 0) {
-            uint e = etherAmount + (tokenAmount * currentRate);{comments}
+    {comments}
+    {comments}
+    {comments}
 
-            // This state update acts as a re-entrancy guard into this function.
-            etherBalance[msg.sender] = 0;
+    {comments}
+    {comments}
+    {comments}
 
-            // external call. The attacker cannot re-enter withdrawAll, since
-            // etherBalance[msg.sender] is already 0.
-            msg.sender.call.value(e)("");{comments}
+    {comments}
+    {comments}
+    {comments}
 
-            // problematic state update, after the external call.
-            tokenBalance[msg.sender] = 0;{comments}
+
+
+    {comments}
+    {comments}
+    {comments}
+
+
+
+
+
+    {comments}
+    {comments}
+    function transfer(address to, uint256 amount) external {
+        require(!lock);
+        {comments}
+        lock = true;
+        if (balances[msg.sender] >= amount) {
+            balances[to] += amount;
+            {comments}
+            balances[msg.sender] -= amount;{comments}
         }
+        lock = false;
     }
-    // This is the function that will be abused by the attacker during the
-    // re-entrancy attack
-    function exchangeAndWithdrawToken(uint amount) public {
-        if (tokenBalance[msg.sender] >= amount) {
-            uint etherAmount = tokenBalance[msg.sender] * currentRate;
-            tokenBalance[msg.sender] -= amount;{comments}
-            // safe because it uses the gas-limited transfer function, which{comments}
-            // does not allow further calls.
-            msg.sender.transfer(etherAmount);{comments}
-        }
-    }{comments}
 }
