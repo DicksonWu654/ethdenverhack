@@ -23,6 +23,12 @@ $('#sub_3').click((e) => {
 })
 
 function post(data) {
+
+    if (data = "") {
+        alert("No data was entered into the formz");
+        return;
+    }
+
     // post the data
     $.ajax({
         url: '/post_contract',

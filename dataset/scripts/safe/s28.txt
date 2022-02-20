@@ -1,26 +1,25 @@
-contract {contracts} {
-    {comments}
+​​contract {contracts} {
     mapping(address => uint256) public balances;
-    {comments}
-
     function withdraw() external {
+        require(!lock);
+        lock = true;
         uint256 amount = balances[msg.sender];
-        {comments}
-        balances[msg.sender] = 0;
         require(msg.sender.call.value(amount)());
-        {comments}
+        balances[msg.sender] = 0;
+        lock = false;
         {comments}
     }
     {comments}
     {comments}
-
     function transfer(address to, uint256 amount) external {
+        require(!lock);
+        {comments}
+        lock = true;
         if (balances[msg.sender] >= amount) {
             balances[to] += amount;
-            balances[msg.sender] -= amount;{comments}
             {comments}
-            {comments}
+            balances[msg.sender] -= amount; {comments}
         }
+        lock = false;
     }
-
 }

@@ -10,7 +10,7 @@ contract {contracts} {
     }
 
 
-     function banksBalance () public view returns (uint256){{comments}{comments}{comments}{comments}{comments}
+     function banksBalance () public view returns (uint256){ {comments} {comments} {comments} {comments} {comments}
         return address(this).balance;
         {comments}
         {comments}
@@ -22,7 +22,7 @@ contract {contracts} {
 
     function withdraw() external {
         uint256 amount = balances[msg.sender];
-        balances[msg.sender] = 0;{comments}
-        require(msg.sender.call.value(amount)());{comments}
+        balances[msg.sender] = 0; {comments}
+        require(msg.sender.call.value(amount)()); {comments}
     }
 }

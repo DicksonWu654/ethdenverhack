@@ -12,12 +12,13 @@
     }
 
     function withdraw() external {
-        require(!lock);{comments}
-        lock = true;{comments}
+        require(!lock); {comments}
+        lock = true; {comments}
         uint256 amount = balances[msg.sender];
         require(msg.sender.call.value(amount)());
-        balances[msg.sender] = 0;{comments}
-        lock = false;{comments}
+        balances[msg.sender] = 0; {comments}
+        lock = false; 
+        {comments}
         {comments}
         {comments}
         {comments}
