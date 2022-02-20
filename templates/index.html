@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deus Ex Securitas</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#intro">Deus Ex Securitas</a>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#points">Core Values</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Interactive Demo</a>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+
+    <div>
+
+        <div class="intro container" id="intro">
+            <div class="pt-4 pb-4 px-md-5 px-3">
+    
+                <h6 class="summary text-uppercase">Smart Contract Security</h6>
+                <h1 class="tagline">Easily accessible blockchain security</h1>
+                <p class="idea">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, inventore. Ipsum placeat consectetur voluptatem earum minima alias quasi dolorem illum optio numquam a vero dolores exercitationem neque eligendi, est quaerat voluptate eos, magni maiores maxime animi doloremque beatae. Perferendis enim cum libero fugiat, magni consequatur doloribus vero est commodi consectetur illo pariatur vel qui eius necessitatibus labore voluptatibus nam.</p>
+        
+            </div>
+        </div>
+
+        <div class="points container" id="points">
+            <div class="row pb-4">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+    
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Generalizations</h5>
+                        
+                        <p class="card-text">By using a natural language processing we are able to </p>
+                      </div>
+                    </div>
+    
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+    
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Ease of Access</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </div>
+                    
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+                    <div class="card">
+    
+                      <div class="card-body">
+                        <h5 class="card-title">Fast Audits</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </div>
+    
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
+    
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Increased Security</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+        <div class="demo container" id="demo">
+            <h3>Try out our Demo</h3>
+            <form class="g-3 pb-4">
+
+                <div class="form-group mb-2">
+                    <label for="contract_input">Sample Smart Contract</label>
+                    <textarea class="form-control" id="contract_input" rows="3"></textarea>
+                </div>
+                
+                <div class="d-flex justify-content">
+                
+                    <button type="button" class="btn btn-primary mx-1"   id="sub_1">Submit form</button>
+                    <button type="button" class="btn btn-secondary mx-1" id="sub_2">Example 1</button>
+                    <button type="button" class="btn btn-secondary mx-1" id="sub_3">Example 2</button>
+                
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>    
+
+</body>
+</html>
