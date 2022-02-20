@@ -2,6 +2,7 @@ from numpy import array
 from glob import glob
 from pathlib import Path
 import itertools
+import numpy as np
 
 def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
 
@@ -29,6 +30,7 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
         scripts.append((sample, 1))
 
     filled_scripts = []
+    filled_scripts_labels = []
     for script in scripts:
 
         script_text_raw = script[0]
@@ -49,13 +51,25 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
                 script_text.append([word])
 
         filled_scripts.append(script_text)
+        filled_scripts_labels.append(script_label)
 
     # generate all permitations
     print('Loading permutations')
     permutations = []
-    for sample in filled_scripts:
-        permutations.extend(list(itertools.product(*sample)))
-        break
+    permutation_labels = []
+    for sample, label in zip(filled_scripts, filled_scripts_labels):
+        generated = list(itertools.product(*sample))
+        permutations.extend(generated)
+        permutation_labels.append([label] * len(generated))
 
-    print('Loaded')
-    print(permutations[0])
+    # generate the dataset
+    Xs = [" ".join(p) for p in permutations]
+    ys = permutation_labels
+
+    Xs_file = open('Xs.txt', 'w')
+    for x in Xs:
+        np.savetxt(x, Xs_file)
+
+    ys_file = open('ys.txt', 'w'):
+    for y in ys:
+        np.save_txt(y, ys_file)
