@@ -12,9 +12,12 @@ def index():
 @app.route('/post_contract', methods=['POST'])
 def post():
     contract = request.form['data']
-    classification = process_gpt3(contract)
+    try:
+        classification = process_gpt3(contract)
+        return classification
+    except:
+        return "Error"
 
-    return f"Received: {contract}\n, Classification: {classification}"
 
 if __name__ == "__main__":
     app.run(debug=True)
