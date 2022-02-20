@@ -1,4 +1,4 @@
-contract {contracts}} {
+contract {contracts} {
   mapping (address => uint) public balances;
   function put() payable {
     balances[msg.sender] = msg.value;

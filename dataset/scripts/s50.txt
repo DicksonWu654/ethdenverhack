@@ -1,0 +1,35 @@
+contract {contracts} {
+    uint256 public withdrawalLimit = {numbers} ether;
+    mapping(address => uint256) public lastWithdrawTime;
+    mapping(address => uint256) public balances;{comments}
+
+    function withdrawFunds (uint256 _weiToWithdraw) public {
+        require(!lock);
+        lock = true;
+        require(balances[msg.sender] >= _weiToWithdraw);
+        // limit the withdrawal
+        require(_weiToWithdraw <= withdrawalLimit);{comments}
+        // limit the time allowed to withdraw{comments}
+        require(now >= lastWithdrawTime[msg.sender] + 1 weeks);
+        require(msg.sender.call.value(_weiToWithdraw)());
+        balances[msg.sender] -= _weiToWithdraw;
+        lastWithdrawTime[msg.sender] = now;{comments}
+        lock = false;
+    }
+    
+    function getTokenCountFor(address x) public view returns(uint) {
+        return tokenBalance[x];{comments}
+        {comments}
+    }
+    
+    function getEtherCountFor(address x) public view returns(uint) {
+        {comments}
+        {comments}
+        {comments}
+        return etherBalance[x];
+    }
+    function depositFunds() public payable {
+        {comments}
+        balances[msg.sender] += msg.value;
+    }
+ }

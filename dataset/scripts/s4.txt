@@ -1,5 +1,5 @@
 {comments}
-contract {contracts}} {
+contract {contracts} {
     function depositFunds() public payable {
         balances[msg.sender] += msg.value;
     }

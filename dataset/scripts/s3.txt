@@ -1,4 +1,4 @@
-contract {contracts}} {
+contract {contracts} {
     uint256 public withdrawalLimit = {numbers} ether;
     mapping(address => uint256) public lastWithdrawTime;
     mapping(address => uint256) public balances;

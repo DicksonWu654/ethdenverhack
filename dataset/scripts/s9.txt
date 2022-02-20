@@ -1,4 +1,4 @@
-contract {contracts}} {
+contract {contracts} {
   {comments}
   mapping (address => uint) public balances;
   function HoneyPot() payable {
