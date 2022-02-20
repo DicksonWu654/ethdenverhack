@@ -3,6 +3,7 @@ from glob import glob
 from pathlib import Path
 import itertools
 import numpy as np
+import random
 
 def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
 
@@ -37,6 +38,7 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
         script_label = script[1]
         
         # pre-process the script
+        script_text_raw = script_text_raw.replace('\n', ' new_line ')
         script_text_raw = " ".join(script_text_raw.split())
         script_text = []
 
@@ -57,19 +59,20 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
     print('Loading permutations')
     permutations = []
     permutation_labels = []
-    for sample, label in zip(filled_scripts, filled_scripts_labels):
-        generated = list(itertools.product(*sample))
-        permutations.extend(generated)
-        permutation_labels.append([label] * len(generated))
+    for i in range(samples_per_script):
+        for sample, label in zip(filled_scripts, filled_scripts_labels):
+            
+            per = ""
+            for s in sample:
+                per += s[random.randint(0, len(s)-1)]
+                per += " "
+
+            permutations.append(per)
+            permutation_labels.append(label)
 
     # generate the dataset
-    Xs = [" ".join(p) for p in permutations]
-    ys = permutation_labels
+    Xs = np.array([p for p in permutations])
+    ys = np.array(permutation_labels)
 
-    Xs_file = open('Xs.txt', 'w')
-    for x in Xs:
-        np.savetxt(x, Xs_file)
-
-    ys_file = open('ys.txt', 'w')
-    for y in ys:
-        np.save_txt(y, ys_file)
+    np.save('Xs.txt', Xs)
+    np.save('ys.txt', ys)
