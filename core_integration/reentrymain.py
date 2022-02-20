@@ -2,6 +2,7 @@ import openai
 import core_integration.dataset_loader as loader
 from core_integration.reentrysamples import samples
 
+
 def process_gpt3(test):
     prompt = samples + "\n --SmartContract-- \n" + test + "\n--Classification--"
 
@@ -14,9 +15,10 @@ def process_gpt3(test):
     while True:
         try:
             result = openai.Completion.create(
-                engine="text-ada-001",
+                engine="text-curie-001",
                 prompt=prompt,
-                max_tokens=5
+                max_tokens=5,
+                temperature=0
             )
             vulnerability = result["choices"][0]["text"]
             break
