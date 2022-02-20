@@ -1,4 +1,4 @@
-contract EtherStore {
+contract {contracts} {
     mapping(address => uint256) public balances;
 
     function transfer(address to, uint256 amount) external {

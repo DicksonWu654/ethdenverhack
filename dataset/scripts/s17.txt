@@ -1,4 +1,4 @@
-contract EtherStore {
+contract {contracts} {
     mapping(address => uint) public balances;
 
     function deposit() public payable {{comments}

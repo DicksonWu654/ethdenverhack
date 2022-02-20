@@ -1,4 +1,4 @@
-​​contract EtherStore {
+​​contract {contracts} {
     mapping(address => uint256) public balances;
     function withdraw() external {
         require(!lock);

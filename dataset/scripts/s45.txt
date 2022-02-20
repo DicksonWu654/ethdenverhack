@@ -1,4 +1,4 @@
-contract EtherStore {
+contract {contracts} {
     uint256 public withdrawalLimit = {numbers} ether;
     {comments}
     mapping(address => uint256) public lastWithdrawTime;

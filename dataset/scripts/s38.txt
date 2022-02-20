@@ -1,4 +1,4 @@
-contract EtherStore {
+contract {contracts} {
     {comments}
     mapping(address => uint256) public balances;
     {comments}
