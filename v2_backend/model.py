@@ -85,7 +85,8 @@ class Model:
             y = y_train_intents,
             epochs = epochs,
             batch_size = batch_size,
-            verbose = 1
+            verbose = 1,
+            validation_split=0.2
         )
         
         # print(f'{json.dumps(history.history)}')

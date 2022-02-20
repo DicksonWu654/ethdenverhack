@@ -1,9 +1,11 @@
-from concurrent.futures import process
 from flask import Flask, render_template, request
+import numpy as np
 
-from core_integration.reentrymain import process_gpt3
+from v2_backend.model import Model
 
 app = Flask(__name__)
+model = Model(256)
+model.load_model('models/v1', 'distilbert-base-uncased')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -13,8 +15,9 @@ def index():
 def post():
     contract = request.form['data']
     try:
-        classification = process_gpt3(contract)
-        return classification
+        output = model.classify(contract, 256)
+        classification = np.argmax(np.array(output))
+        return f"{classification}"
     except:
         return "Error"
 

@@ -9,5 +9,5 @@ m = Model(padding=256)
 m.build_model()
 print(m.model.summary())
 
-m.train('dataset/train.pkl', 5)
-m.save('models/v1')
+m.train('dataset/train.pkl', 3)
+m.save_model('models/v1')

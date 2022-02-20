@@ -22,9 +22,25 @@ $('#sub_3').click((e) => {
     post(EXAMPLE_2);
 })
 
+$('#sub_4').click((e) => {
+    e.preventDefault();
+
+    // write the example to the text area
+    $('#contract_input').val(EXAMPLE_3);
+    post(EXAMPLE_3);
+})
+
+$('#sub_5').click((e) => {
+    e.preventDefault();
+
+    // write the example to the text area
+    $('#contract_input').val(EXAMPLE_4);
+    post(EXAMPLE_4);
+})
+
 function post(data) {
 
-    if (data = "") {
+    if (data == "") {
         alert("No data was entered into the formz");
         return;
     }
@@ -35,10 +51,11 @@ function post(data) {
         data: { 'data': data },
         type: 'POST',
         success: function (response) {
-            if (response == "No") {
+            console.log(response)
+            if (response == 0) {
                 alert("We detected no vunerability in this contract");
             }
-            else if (response == "Yes") {
+            else if (response == 1) {
                 alert("We detected a vunerability to the re-entry attack in this contract");
             }
             else if (response = "Error") {
@@ -101,3 +118,48 @@ const EXAMPLE_2 = `contract EtherStore {
         return address(this).balance;
     }
 }`;
+
+const EXAMPLE_3 =  `
+​​contract MyNewContract {
+    mapping(address => uint256) public balances;
+    function withdraw() external {
+        require(!lock);
+        lock = true;
+        uint256 amount = balances[msg.sender];
+        require(msg.sender.call.value(amount)());
+        balances[msg.sender] = 0;
+        lock = false;
+    }
+    function transfer(address to, uint256 amount) external {
+        // lock used to prevent people from accessing this while it's running
+        require(!lock);
+        lock = true;
+        if (balances[msg.sender] >= amount) {
+            balances[to] += amount;
+            balances[msg.sender] -= amount;
+        }
+        lock = false;
+    }
+}
+
+`;
+
+const EXAMPLE_4 = `
+contract PaymentContract {
+    mapping(address => uint256) public balances;
+
+    function transfer(address to, uint256 amount) external {
+        if (balances[msg.sender] >= amount) {
+            balances[to] += amount;
+            balances[msg.sender] -= amount;
+        }
+    }
+
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        require(msg.sender.call.value(amount)());
+        balances[msg.sender] = 0;
+    }
+}
+
+`;
