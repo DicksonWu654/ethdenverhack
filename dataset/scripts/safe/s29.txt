@@ -3,9 +3,7 @@
     function withdraw() external {
         require(!lock);
         lock = true;
-        {comments}
         uint256 amount = balances[msg.sender];
-        {comments}
         require(msg.sender.call.value(amount)());
         balances[msg.sender] = 0;
         lock = false;
@@ -17,25 +15,6 @@
 
 
     {comments}
-    
-    {comments}
-    {comments}
-    {comments}
-
-    {comments}
-    {comments}
-    {comments}
-
-    {comments}
-    {comments}
-    {comments}
-
-    {comments}
-    {comments}
-    {comments}
-
-
-
     {comments}
     {comments}
     {comments}
@@ -53,7 +32,7 @@
         if (balances[msg.sender] >= amount) {
             balances[to] += amount;
             {comments}
-            balances[msg.sender] -= amount;{comments}
+            balances[msg.sender] -= amount; {comments}
         }
         lock = false;
     }

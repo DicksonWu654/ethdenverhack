@@ -4,16 +4,16 @@ contract {contracts} {
     {comments}
 
     function transfer(address to, uint256 amount) external {
-        if (balances[msg.sender] >= amount) {{comments}
+        if (balances[msg.sender] >= amount) {comments}
             balances[to] += amount;
-            balances[msg.sender] -= amount;{comments}
-            {comments}{comments}
+            balances[msg.sender] -= amount; {comments}
+            {comments} {comments}
         }
     }
 
     function withdraw() external {
-        uint256 amount = balances[msg.sender];{comments}
+        uint256 amount = balances[msg.sender]; {comments}
         balances[msg.sender] = 0;
-        require(msg.sender.call.value(amount)());{comments}
+        require(msg.sender.call.value(amount)()); {comments}
     }
 }

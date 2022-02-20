@@ -9,14 +9,14 @@ contract {contracts} {
 
     {comments}
     function withdrawFunds (uint256 _weiToWithdraw) public {
-        require(!lock);{comments}
+        require(!lock); {comments}
         lock = true;
         require(balances[msg.sender] >= _weiToWithdraw);
         // limit the withdrawal
         require(_weiToWithdraw <= withdrawalLimit);
-        // limit the time allowed to withdraw{comments}
+        // limit the time allowed to withdraw {comments}
         require(now >= lastWithdrawTime[msg.sender] + 1 weeks);
-        require(msg.sender.call.value(_weiToWithdraw)());{comments}
+        require(msg.sender.call.value(_weiToWithdraw)()); {comments}
         balances[msg.sender] -= _weiToWithdraw;
         lastWithdrawTime[msg.sender] = now;
         lock = false;
@@ -24,6 +24,6 @@ contract {contracts} {
     {comments}
     {comments}
     function depositFunds() public payable {
-        balances[msg.sender] += msg.value;{comments}
+        balances[msg.sender] += msg.value; {comments}
     }
  }
