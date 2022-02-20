@@ -1,5 +1,7 @@
 # EthDenver - Deus Ex Securitas
 
+![](https://github.com/DicksonWu654/ethdenverhack/blob/main/static/logo.png)
+
 Using machine learning to automatically audit smart contracts. NLP models can classify solidity scripts by their vulnerability and could even point out what lines contribute to the vulnerable nature of the code. 
 Since we're using machine learning, we bring the cost of an audit from days to seconds, and thousands of dollars to nothing - allowing everyone to have access to security.
 This leads to an overall safer and more secure blockchain ecosystem and creates a security floor that no project should fall below.
