@@ -1,0 +1,14 @@
+EtherStore
+NotEtherStore
+HoneyPot
+NotHoneyPot
+VulnerableBank
+NotVulnerableBank
+Token
+NotToken
+RandomName
+Mars
+Steal
+Safe
+Positive
+Negative

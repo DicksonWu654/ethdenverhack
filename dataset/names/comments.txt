@@ -1,0 +1,98 @@
+// limit the withdrawal
+// limit the time allowed to withdraw
+// require(now >= lastWithdrawTime[msg.sender] + 1 weeks);
+// require(msg.sender.call.value(_weiToWithdraw)());
+// balances[msg.sender] -= _weiToWithdraw;
+// mapping(address => uint256) public lastWithdrawTime;
+// require(!lock);
+// lock = true;
+// lock = false;
+// balances[msg.sender] = 0;
+// require(msg.sender.call.value(amount)());
+// uint256 amount = balances[msg.sender];
+// function transfer(address to, uint256 amount) external {
+// Function vulnerable to re-entrancy attack
+// This state update acts as a re-entrancy guard into this function.
+// external call. The attacker cannot re-enter withdrawAll, since
+// etherBalance[msg.sender] is already 0.
+// problematic state update, after the external call.
+// tokenBalance[msg.sender] = 0;
+// uint etherAmount = etherBalance[msg.sender];
+// uint tokenAmount = tokenBalance[msg.sender];
+// if (etherAmount > 0 && tokenAmount > 0) {
+// uint e = etherAmount + (tokenAmount * currentRate);
+// tokenBalance[msg.sender] = 0;
+// This contract keeps track of two balances for it's users. A user can
+// send ether to this contract and exchange ether for tokens and vice
+// versa, given a varying exchange rate (currentRate).
+// for solidity 0.4.19
+// This contract supports various utility functions for transferring,
+// exchanging Ether and Tokens.
+// Note that this probably makes it rather hard for symbolic execution
+// tools to execute all combinations of possible re-entry points.
+// mapping (address=>uint256) balance;
+// function deposit () external payable {
+// function withdraw () external payable{
+// require(balance[msg.sender]>=0,'Not enough ether');
+// payable(msg.sender).call{value:balance[msg.sender]}("");
+// balance[msg.sender]=0;
+// function banksBalance () public view returns (uint256){
+// return address(this).balance;
+// function userBalance (address _address) public view returns (uint256){
+// return balance[_address];
+// Watney plans to drive 3,235 km (2,010 mi) to Schiaparelli crater where the next mission, 
+// Ares 4, will land in four years and whose MAV is already pre-positioned. 
+// He begins modifying one of the rovers for the journey, adding solar cells and an additional battery. 
+// He makes a three-week test drive to recover the Pathfinder lander and Sojourner rover and 
+// brings them back to the Hab, enabling him to contact NASA. Mitch Henderson, the Ares 3 flight director, 
+// convinces NASA Administrator Teddy Sanders to allow him to inform the Ares 3 crew of Watney's survival; 
+// they are thrilled, except for Lewis, who is guilt-stricken at leaving him behind.
+//limit the withdrawal
+//limit the time allowed to withdraw
+//require(now >= lastWithdrawTime[msg.sender] + 1 weeks);
+//require(msg.sender.call.value(_weiToWithdraw)());
+//balances[msg.sender] -= _weiToWithdraw;
+//mapping(address => uint256) public lastWithdrawTime;
+//require(!lock);
+//lock = true;
+//lock = false;
+//balances[msg.sender] = 0;
+//require(msg.sender.call.value(amount)());
+//uint256 amount = balances[msg.sender];
+//function transfer(address to, uint256 amount) external {
+//Function vulnerable to re-entrancy attack
+//This state update acts as a re-entrancy guard into this function.
+//external call. The attacker cannot re-enter withdrawAll, since
+//etherBalance[msg.sender] is already 0.
+//problematic state update, after the external call.
+//tokenBalance[msg.sender] = 0;
+//uint etherAmount = etherBalance[msg.sender];
+//uint tokenAmount = tokenBalance[msg.sender];
+//if (etherAmount > 0 && tokenAmount > 0) {
+//uint e = etherAmount + (tokenAmount * currentRate);
+//tokenBalance[msg.sender] = 0;
+//This contract keeps track of two balances for it's users. A user can
+//send ether to this contract and exchange ether for tokens and vice
+//versa, given a varying exchange rate (currentRate).
+//for solidity 0.4.19
+//This contract supports various utility functions for transferring,
+//exchanging Ether and Tokens.
+//Note that this probably makes it rather hard for symbolic execution
+//tools to execute all combinations of possible re-entry points.
+//mapping (address=>uint256) balance;
+//function deposit () external payable {
+//function withdraw () external payable{
+//require(balance[msg.sender]>=0,'Not enough ether');
+//payable(msg.sender).call{value:balance[msg.sender]}("");
+//balance[msg.sender]=0;
+//function banksBalance () public view returns (uint256){
+//return address(this).balance;
+//function userBalance (address _address) public view returns (uint256){
+//return balance[_address];
+//Watney plans to drive 3,235 km (2,010 mi) to Schiaparelli crater where the next mission, 
+//Ares 4, will land in four years and whose MAV is already pre-positioned. 
+//He begins modifying one of the rovers for the journey, adding solar cells and an additional battery. 
+//He makes a three-week test drive to recover the Pathfinder lander and Sojourner rover and 
+//brings them back to the Hab, enabling him to contact NASA. Mitch Henderson, the Ares 3 flight director, 
+//convinces NASA Administrator Teddy Sanders to allow him to inform the Ares 3 crew of Watney's survival; 
+//they are thrilled, except for Lewis, who is guilt-stricken at leaving him behind.

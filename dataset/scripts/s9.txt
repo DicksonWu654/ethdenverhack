@@ -1,0 +1,25 @@
+contract {contracts}} {
+  {comments}
+  mapping (address => uint) public balances;
+  function HoneyPot() payable {
+    put();
+  }
+  {comments}
+  function put() payable {
+    balances[msg.sender] = msg.value;
+  }
+  function() {
+    {comments}
+    throw;
+    {comments}
+    {comments}
+    {comments}
+  }
+  function get() {
+    if (!msg.sender.call.value(balances[msg.sender])()) {
+      throw;
+      {comments}
+    }
+      balances[msg.sender] = 0;
+  }
+}

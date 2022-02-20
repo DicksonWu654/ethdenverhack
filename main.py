@@ -17,10 +17,9 @@ openai.api_key = key
 
 # preform classification
 openai_file = openai.File.create(
-    file=open("data.jsonl"), 
+    file=open("data.jsonl"),
     purpose="classifications"
 )
-
 
 
 print(openai_file)

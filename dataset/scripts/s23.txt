@@ -1,0 +1,28 @@
+contract EtherStore {
+    mapping(address => uint256) public balances;
+
+    function transfer(address to, uint256 amount) external {
+        if (balances[msg.sender] >= amount) {
+            balances[to] += amount;
+            balances[msg.sender] -= amount;
+        }
+    }
+
+    function banksBalance () public view returns (uint256){
+        return address(this).balance;
+    }
+    {comments}
+    {comments}
+    {comments}
+
+    function userBalance (address _address) public view returns (uint256){
+        return balance[_address];
+    }
+
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        require(msg.sender.call.value(amount)());
+        balances[msg.sender] = 0;
+    }
+    {comments}
+}
