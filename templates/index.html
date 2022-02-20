@@ -19,11 +19,11 @@
     
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
+        <div class="container-fluid px-4">
 
             <a class="navbar-brand" href="#intro">Deus Ex Securitas</a>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#points">Core Values</a>
@@ -37,18 +37,25 @@
 
     <div>
 
-        <div class="intro container" id="intro">
-            <div class="pt-4 pb-4 px-md-5 px-3">
-    
-                <h6 class="summary text-uppercase">Smart Contract Security</h6>
-                <h1 class="tagline">Easily accessible blockchain security</h1>
-                <p class="idea">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, inventore. Ipsum placeat consectetur voluptatem earum minima alias quasi dolorem illum optio numquam a vero dolores exercitationem neque eligendi, est quaerat voluptate eos, magni maiores maxime animi doloremque beatae. Perferendis enim cum libero fugiat, magni consequatur doloribus vero est commodi consectetur illo pariatur vel qui eius necessitatibus labore voluptatibus nam.</p>
+        <div class="intro container pb-4 pt-4" id="intro">
+            <div class="row">
+                <div class="col-md-8 col-12">
         
+                    <h6 class="summary text-uppercase">Smart Contract Security</h6>
+                    <h1 class="tagline">Next-Gen Blockchain Security*</h1>
+                    <p class="idea">Our mission is to bring protection to the entire decentralized internet.  We will hopefully shortly begin protecting over $201B in digital assets from hackets.</p>
+            
+                </div>
+
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='logo.png') }}" id="logo" alt="">
+                </div>
+
             </div>
         </div>
 
-        <div class="points container" id="points">
-            <div class="row pb-4">
+        <div class="points container pt-3 pb-3" id="points">
+            <div class="row">
                 <div class="col-12 col-sm-6 col-lg-3 mb-2">
     
                     <div class="card">
@@ -93,13 +100,35 @@
             </div>
         </div>
 
-        <div class="demo container" id="demo">
-            <h3>Try out our Demo</h3>
-            <form class="g-3 pb-4">
+        <div class="explination container  pt-3 pb-3" id="explination">
+            <h2>Project Details</h2>
+
+            <div class="row">
+                <div class="col-md-6 col-12">
+
+                    <h5>Re-Entry Attacks</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus, atque neque asperiores itaque, mollitia inventore officiis deserunt saepe cupiditate nesciunt fugiat officia iusto amet.
+                    </p>
+                </div>
+                <div class="col-md-6 col-12">
+
+                    <h5>Our Backend</h5>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad magni esse quam odit nihil perspiciatis fuga amet quae optio consequatur repellendus iusto et quos, velit, illum maxime excepturi ullam nam?
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="demo container  pt-3 pb-3" id="demo">
+            <h2>Try out our Demo</h2>
+            <form class="g-3">
 
                 <div class="form-group mb-2">
                     <label for="contract_input">Sample Smart Contract</label>
-                    <textarea class="form-control" id="contract_input" rows="3"></textarea>
+                    <textarea class="form-control" id="contract_input" rows="16"></textarea>
                 </div>
                 
                 <div class="d-flex justify-content">
@@ -113,6 +142,10 @@
             </form>
         </div>
 
+    </div>
+
+    <div class="container plee pb-2">
+        <i>*We'll be less sarcastic if you hire us, Quantstamp</i>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

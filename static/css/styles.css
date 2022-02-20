@@ -2,3 +2,23 @@
     font-family: 'Roboto', sans-serif;
     border-radius: 0 !important;
 }
+
+p {
+    font-size: 1.2rem;
+}
+
+#logo
+{
+    width: auto;
+    height: auto;
+    margin: auto;
+    margin-right: 0;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #logo
+    {
+        display: none;
+    }
+}
