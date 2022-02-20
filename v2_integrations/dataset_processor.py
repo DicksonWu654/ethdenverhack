@@ -70,6 +70,6 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
     for x in Xs:
         np.savetxt(x, Xs_file)
 
-    ys_file = open('ys.txt', 'w'):
+    ys_file = open('ys.txt', 'w')
     for y in ys:
         np.save_txt(y, ys_file)
