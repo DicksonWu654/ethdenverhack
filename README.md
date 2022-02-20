@@ -7,7 +7,7 @@ This leads to an overall safer and more secure blockchain ecosystem and creates 
 ## Re-entry attacks
 Re-entry attacks can occur when a function can be interupted in the middle of its execution and subsequently re-initiated.  Thus, assuming both runs can complete without errors, the attacker can run specific parts of a script an arbitrary number of times before progressing.
 
-## Out backend
+## Our backend
 Using a fine-tuned DistilBert model with a classification head allowed us to quickly and easily train, test, and deploy our model.  This resulted in a system with a validaion accuracy of 96%.  While likely biased due to the small dataset, numerous mesures were taken to minimize the effect of overfitting.
 
 ## Our future plans
