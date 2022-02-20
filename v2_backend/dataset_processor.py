@@ -4,6 +4,8 @@ from pathlib import Path
 import itertools
 import numpy as np
 import random
+import pandas as pd
+import json
 
 def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
 
@@ -74,5 +76,15 @@ def generate_dataset(dataset_path:str, samples_per_script:int) -> array:
     Xs = np.array([p for p in permutations])
     ys = np.array(permutation_labels)
 
-    np.save('Xs.txt', Xs)
-    np.save('ys.txt', ys)
+    dataset = []
+    for x, y in zip(Xs, ys):
+        dataset.append({
+            'contract': x,
+            'label': f"{y}"
+        })
+
+    df = pd.DataFrame(dataset)
+    df.to_pickle(f'{dataset_path}/train.pkl')
+
+    with open(f'{dataset_path}/sample.json', 'w') as f:
+        json.dump(dataset[::20], f)
