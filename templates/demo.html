@@ -1,0 +1,29 @@
+{% extends '_layout.html' %}
+
+{% block title %}Demo{% endblock %}
+
+{% block content %}
+
+<div class="demo container pt-4 pb-4" id="demo">
+    <h3>Try out our Demo</h3>
+    <form class="g-3">
+
+        <div class="form-group mb-4">
+            <label for="contract_input">Sample Smart Contract</label>
+            <textarea class="form-control" placeholder="Input a smart contract..." id="contract_input" rows="16"></textarea>
+        </div>
+        
+        <div class="d-flex justify-content">
+        
+            <button type="button" class="btn btn-primary mx-1" id="sub_1">Submit form</button>
+            <button type="button" class="btn btn-secondary mx-1" id="sub_2">Sample 1</button>
+            <button type="button" class="btn btn-secondary mx-1" id="sub_3">Sample 2</button>
+            <button type="button" class="btn btn-secondary mx-1" id="sub_4">Sample 3</button>
+            <button type="button" class="btn btn-secondary mx-1" id="sub_5">Sample 4</button>
+        
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deus Ex Securitas</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    
+    <div class="index">
+    
+        <div>
+    
+            <div class="demo container  pt-3 pb-3" id="demo">
+                <h2>Try out our Demo</h2>
+                <form class="g-3">
+    
+                    <div class="form-group mb-2">
+                        <label for="contract_input">Sample Smart Contract</label>
+                        <textarea class="form-control" id="contract_input" rows="16"></textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content">
+                    
+                        <button type="button" class="btn btn-primary mx-1" id="sub_1">Submit form</button>
+                        <button type="button" class="btn btn-warning mx-1" id="sub_2">Sample 1</button>
+                        <button type="button" class="btn btn-warning mx-1" id="sub_3">Sample 2</button>
+                        <button type="button" class="btn btn-warning mx-1" id="sub_4">Sample 3</button>
+                        <button type="button" class="btn btn-warning mx-1" id="sub_5">Sample 4</button>
+                    
+                    </div>
+    
+                </form>
+            </div>
+    
+        </div>
+    
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</body>
+</html>

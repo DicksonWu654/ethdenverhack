@@ -1,159 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends '_layout.html' %}
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deus Ex Securitas</title>
+{% block title %}Home{% endblock %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block content %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet"> 
+<div class="intro container pb-4 pt-4" id="intro">
+    <div class="row">
+        <div class="col-md-8 col-12">
 
-</head>
-<body>
+            <h6 class="summary text-uppercase">Smart Contract Security</h6>
+            <h1 class="tagline">Next-Gen Blockchain Security</h1>
+            <p class="idea">
+                Audits for smart contract shouldn't be reserved for people with hacking experience and large pockets.  That's why we designed a machine learning approch to auditing where models automatically identify vulnerabilities.  We've already created a program that's able to locate re-entry attacks with an above 90% accuracy.  We plan on adding more defences for kinds of attacks in the future to better protect the entire decentralized ecosystem. 
+            </p>
+
+            <a href="/demo" class="btn btn-primary m-1">Try Our Demo</a>
     
-    <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid px-4">
-
-            <a class="navbar-brand" href="#intro">Deus Ex Securitas</a>
-
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#points">Core Values</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#demo">Interactive Demo</a>
-                    </li>
-                </ul>
         </div>
-    </nav>
 
-    <div>
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='logo.png') }}" id="logo" alt="">
+        </div>
 
-        <div class="intro container pb-4 pt-4" id="intro">
-            <div class="row">
-                <div class="col-md-8 col-12">
-        
-                    <h6 class="summary text-uppercase">Smart Contract Security</h6>
-                    <h1 class="tagline">Next-Gen Blockchain Security*</h1>
-                    <p class="idea">
-                        Audits for smart contract shouldn't be reserved for people with hacking experience and large pockets.  That's why we designed a machine learning approch to auditing where models automatically identify scripts.  We've already created a program that's able to locate re-entry attacks with an above 90% accuracy.  We plan on adding more defences for kinds of attacks in the future to better protect the entire decentralized ecosystem. 
-                    </p>
+    </div>
+</div>
+
+<div class="points container pt-3 pb-3" id="points">
+    <div class="row">
+        <div class="col-12 col-md-4 mb-2">
+
+            <div class="card border-primary h-100">
+              <div class="card-body">
+                <h5 class="card-title">Generalization</h5>
+                
+                <p class="card-text">By using machine learning we hope to train our models to recognise all kinds of vunerabilities, even those that aren't obvious to humans</p>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-4 mb-2">
+
+            <div class="card border-primary h-100">
+              <div class="card-body">
+                <h5 class="card-title">Ease of Access</h5>
+                <p class="card-text">Our model will be freely accessible to anyone with an internet connection so you can audit your scripts all through the development process</p>
+              </div>
+            </div>
             
-                </div>
-
-                <div class="col-md-4">
-                    <img src="{{ url_for('static', filename='logo.png') }}" id="logo" alt="">
-                </div>
-
-            </div>
         </div>
+        <div class="col-12 col-md-4 mb-2">
+            <div class="card border-primary h-100">
 
-        <div class="points container pt-3 pb-3" id="points">
-            <div class="row">
-                <div class="col-12 col-md-4 mb-2">
-    
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Generalization</h5>
-                        
-                        <p class="card-text">By using machine learning we hope to train our models to recognise all kinds of vunerabilities, even those that aren't obvious to humans</p>
-                      </div>
-                    </div>
-    
-                </div>
-                <div class="col-12 col-md-4 mb-2">
-    
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Ease of Access</h5>
-                        <p class="card-text">Our model will be freely accessible to anyone with an internet connection so you can audit your scripts all through the development process</p>
-                      </div>
-                    </div>
-                    
-                </div>
-                <div class="col-12 col-md-4 mb-2">
-                    <div class="card">
-    
-                      <div class="card-body">
-                        <h5 class="card-title">Fast Audits</h5>
-                        <p class="card-text">Scanning scripts with AI means that we can provide audits in seconds instead of weeks. Security can now be a part of your development process</p>
-                      </div>
-                    </div>
-    
-                </div>
-
+              <div class="card-body">
+                <h5 class="card-title">Fast Audits</h5>
+                <p class="card-text">Scanning scripts with AI means that we can provide audits in seconds instead of weeks. Security can now be a part of your development process</p>
+              </div>
             </div>
-        </div>
 
-        <div class="explination container pt-3 pb-3" id="explination">
-            <h2>Project Details</h2>
-
-            <div class="row">
-                <div class="col-md-6 col-12 mb-2">
-
-                    <h5>Re-Entry Attacks</h5>
-                    <p>
-                        Re-entry attacks can occur when a function can be interupted in the middle of its execution and subsequently re-initiated.  Thus, assuming both runs can complete without errors, the attacker can run specific parts of a script an arbitrary number of times before progressing.
-                    </p>
-                    <a class="" target="none" href="https://quantstamp.com/blog/what-is-a-re-entrancy-attack">Article Explination</a>
-                </div>
-                <div class="col-md-6 col-12 mb-2">
-
-                    <h5>Our Backend</h5>
-                    <p>
-                        Using a fine-tuned DistilBert model with a classification head allowed us to quickly and easily train, test, and deploy our model.  This resulted in a system with a validaion accuracy of 96%.  While likely biased due to the small dataset, numerous mesures were taken to minimize the effect of overfitting.
-                    </p>
-                    <a class="" target="none" href="https://huggingface.co/docs/transformers/model_doc/distilbert">DistilBERT explained</a>
-
-                </div>
-
-                <div class="col-12">
-                    <h5>Our Future Plans</h5>
-                    <p>
-                        Right now we've got a model that can detect re-entry attacks. It's only a matter of data and resources to scale up to all types of known exploits. We but aren't stopping there, we can even reverse-engineer the model's process and highlight parts of the code which are vulnerable to the exploit. Additionally we can even train models which are capable of generalizing unknown types of exploits, surpassing human level performance.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="demo container  pt-3 pb-3" id="demo">
-            <h2>Try out our Demo</h2>
-            <form class="g-3">
-
-                <div class="form-group mb-2">
-                    <label for="contract_input">Sample Smart Contract</label>
-                    <textarea class="form-control" id="contract_input" rows="16"></textarea>
-                </div>
-                
-                <div class="d-flex justify-content">
-                
-                    <button type="button" class="btn btn-primary mx-1" id="sub_1">Submit form</button>
-                    <button type="button" class="btn btn-warning mx-1" id="sub_2">Sample 1</button>
-                    <button type="button" class="btn btn-warning mx-1" id="sub_3">Sample 2</button>
-                    <button type="button" class="btn btn-warning mx-1" id="sub_4">Sample 3</button>
-                    <button type="button" class="btn btn-warning mx-1" id="sub_5">Sample 4</button>
-                
-                </div>
-
-            </form>
         </div>
 
     </div>
+</div>
 
-    <div class="container plee pb-2">
-        <i>*We'd love to work with you, Quantstamp</i>
+<div class="explination container pt-3 pb-3" id="explination">
+    <h3>Project Details</h3>
+
+    <div class="row">
+        <div class="col-md-6 col-12 mb-4">
+
+            <h5>Re-Entry Attacks</h5>
+            <p>
+                Re-entry attacks can occur when a function can be interupted in the middle of its execution and subsequently re-initiated.  Thus, assuming both runs can complete without errors, the attacker can run specific parts of a script an arbitrary number of times before progressing.
+            </p>
+            <a class="" target="none" href="https://quantstamp.com/blog/what-is-a-re-entrancy-attack">Re-Entry Attacks Explained</a>
+        </div>
+        <div class="col-md-6 col-12 mb-4">
+
+            <h5>Our Backend</h5>
+            <p>
+                Using a fine-tuned DistilBert model with a classification head allowed us to quickly and easily train, test, and deploy our model.  This resulted in a system with a validaion accuracy of 96%.  While likely biased due to the small dataset, numerous mesures were taken to minimize the effect of overfitting.
+            </p>
+            <a class="" target="none" href="https://huggingface.co/docs/transformers/model_doc/distilbert">DistilBERT plained</a>
+
+        </div>
+
+        <div class="col-12">
+            <h5>Our Future Plans</h5>
+            <p>
+                Right now we've got a model that can detect re-entry attacks. It's only a matter of data and resources to scale up to all types of known exploits. We but aren't stopping there, we can even reverse-engineer the model's process and highlight parts of the code which are vulnerable to the exploit. Additionally we can even train models which are capable of generalizing unknown types of exploits, surpassing human level performance.
+            </p>
+        </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>    
-
-</body>
-</html>
+{% endblock %}

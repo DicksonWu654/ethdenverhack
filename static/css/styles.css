@@ -5,6 +5,10 @@
 
 p {
     font-size: 1.2rem;
+    color: #f4f4f4 !important;
+}
+li {
+    color: #f4f4f4 !important;
 }
 
 #logo
@@ -16,9 +20,17 @@ p {
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}
+
+@media (max-width: 767px) {
     #logo
     {
         display: none;
     }
+
+    
 }
